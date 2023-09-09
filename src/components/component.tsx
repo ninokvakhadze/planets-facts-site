@@ -64,6 +64,17 @@ const Section = styled.section`
   margin-top: 68px;
   display: flex;
   flex-direction: column;
+  @media only screen and (min-width: 768px) {
+    margin-top: 169px;
+    padding: 0px 39px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-areas:
+      "planet-image planet-image"
+      "info types"
+      "facts facts";
+  }
 `;
 const ImageType = styled.div`
   display: flex;
@@ -71,6 +82,15 @@ const ImageType = styled.div`
   padding: 20px 24px;
   padding-bottom: 0px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  @media only screen and (min-width: 768px) {
+    flex-direction: column;
+    justify-content: unset;
+    gap: 16px;
+    border-bottom: unset;
+    margin-top: 186px;
+    padding: unset;
+    grid-area: types;
+  }
 `;
 
 const H2 = styled.h2`
@@ -84,12 +104,28 @@ const H2 = styled.h2`
   letter-spacing: 1.929px;
   text-transform: uppercase;
   padding-bottom: 16px;
+  @media only screen and (min-width: 768px) {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 281px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 40px;
+    text-align: left;
+    padding: 0px 20px;
+  }
 `;
 const Textspan = styled.span`
   display: none;
+  @media only screen and (min-width: 768px) {
+    display: inline;
+  }
 `;
 const Number = styled.span`
   display: none;
+  @media only screen and (min-width: 768px) {
+    display: inline;
+    opacity: 0.5;
+  }
 `;
 
 const ImageDiv = styled.div`
@@ -98,6 +134,9 @@ const ImageDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (min-width: 768px) {
+    margin-right: 160px;
+  }
 `;
 
 const Planetimg = styled.img`
@@ -105,12 +144,24 @@ const Planetimg = styled.img`
   height: 111px;
   align-self: center;
   margin-top: 95px;
+  @media only screen and (min-width: 768px) {
+    width: 184px;
+    height: 184px;
+    margin: auto;
+    margin-top: 146px;
+    margin-right: -220px;
+    grid-area: planet-image;
+  }
 `;
 const Surfaceimg = styled.img`
   width: 100px;
   position: absolute;
   top: 170px;
   display: none;
+  @media only screen and (min-width: 768px) {
+    top: 270px;
+    left: 310px;
+  }
 `;
 
 const Information = styled.div`
@@ -119,6 +170,17 @@ const Information = styled.div`
   gap: 16px;
   padding: 0px 24px;
   margin-top: 98px;
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0px 24px;
+    margin: auto;
+    margin-top: 130px;
+    padding: unset;
+    grid-area: info;
+    margin-left: 26px;
+  }
 `;
 const H3 = styled.h3`
   color: #fff;
@@ -129,6 +191,10 @@ const H3 = styled.h3`
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+  @media only screen and (min-width: 768px) {
+    font-size: 48px;
+    text-align: left;
+  }
 `;
 const Text = styled.p`
   color: #fff;
@@ -138,11 +204,18 @@ const Text = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 22px; /* 200% */
+  @media only screen and (min-width: 768px) {
+    width: 339px;
+    text-align: left;
+  }
 `;
 const Source = styled.div`
   display: flex;
   gap: 3px;
   justify-content: center;
+  @media only screen and (min-width: 768px) {
+    justify-content: left;
+  }
 `;
 
 const Wiki = styled.p`
@@ -175,12 +248,29 @@ const Facts = styled.div`
   padding: 0px 24px;
   margin-bottom: 47px;
   margin-top: 28px;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 11px;
+    margin: auto;
+    margin-top: 27px;
+    margin-bottom: 36px;
+    grid-area: facts;
+  }
 `;
 const Fact = styled.div`
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  @media only screen and (min-width: 768px) {
+    padding: 16px 24px;
+    width: 164px;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 `;
 
 const Name2 = styled.p`
@@ -193,6 +283,8 @@ const Name2 = styled.p`
   letter-spacing: 0.727px;
   text-transform: uppercase;
   margin-top: 4px;
+  @media only screen and (min-width: 768px) {
+  }
 `;
 const Data = styled.p`
   color: #fff;
@@ -204,4 +296,9 @@ const Data = styled.p`
   line-height: normal;
   letter-spacing: -0.75px;
   text-transform: uppercase;
+  @media only screen and (min-width: 768px) {
+    font-size: 24px;
+    letter-spacing: -0.9px;
+    text-align: left;
+  }
 `;

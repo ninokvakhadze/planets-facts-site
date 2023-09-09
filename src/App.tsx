@@ -126,6 +126,9 @@ const HeaderStyle = styled.header<{ imageurl: string }>`
   border-bottom: 1px soLid rgba(255, 255, 255, 0.2);
   top: 0px;
   @media only screen and (min-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 51px;
   }
 `;
 
@@ -146,6 +149,9 @@ const Burger = styled.img`
   width: 24px;
   height: 17px;
   margin-top: 10px;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const fallDown = keyframes`
@@ -167,11 +173,20 @@ const Nav = styled.nav<{ primary: string }>`
   animation: ${fallDown} 1s ease-in-out forwards;
   display: ${(props) => (props.primary === "true" ? "inLine" : "none")};
   @media only screen and (min-width: 768px) {
+    position: unset;
+    border-top: unset;
+    background-color: unset;
+    margin: 39px -20px 0px -20px;
+    padding: unset;
+    animation: unset;
+    display: block;
   }
 `;
 const Ul = styled.ul`
   list-style: none;
   @media only screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 const Li = styled.li`
@@ -181,25 +196,39 @@ const Li = styled.li`
   padding-top: 20px;
   padding-bottom: 20px;
   @media only screen and (min-width: 768px) {
+    border-bottom: unset;
+    padding-top: unset;
+    padding-bottom: unset;
   }
 `;
 
 const Hoverline = styled.div`
   display: none;
+  @media only screen and (min-width: 768px) {
+  }
 `;
 const LiDiv = styled.div`
   display: flex;
   gap: 25px;
+  @media only screen and (min-width: 768px) {
+
+  }
 `;
 const Arrow = styled.img`
   width: 4px;
   height: 8px;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 const Circle = styled.div<{ color: string }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Name = styled.p`
@@ -212,5 +241,9 @@ const Name = styled.p`
   line-height: 25px; /* 166.667% */
   letter-spacing: 1.364px;
   text-transform: uppercase;
+  @media only screen and (min-width: 768px) {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
 `;
 export default App;
