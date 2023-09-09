@@ -130,6 +130,11 @@ const HeaderStyle = styled.header<{ imageurl: string }>`
     align-items: center;
     padding: 32px 51px;
   }
+  @media only screen and (min-width: 1200px) {
+    flex-direction: row;
+    padding: 22px 48px;
+    justify-content: space-between;
+  }
 `;
 
 const H1 = styled.h1`
@@ -141,8 +146,6 @@ const H1 = styled.h1`
   line-height: normal;
   letter-spacing: -1.05px;
   text-transform: uppercase;
-  @media only screen and (min-width: 768px) {
-  }
 `;
 
 const Burger = styled.img`
@@ -181,12 +184,20 @@ const Nav = styled.nav<{ primary: string }>`
     animation: unset;
     display: block;
   }
+  @media only screen and (min-width: 1200px) {
+    margin: unset;
+    display: inline;
+    width: unset;
+  }
 `;
 const Ul = styled.ul`
   list-style: none;
   @media only screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
+  }
+  @media only screen and (min-width: 1200px) {
+    gap: 33px;
   }
 `;
 const Li = styled.li`
@@ -200,19 +211,20 @@ const Li = styled.li`
     padding-top: unset;
     padding-bottom: unset;
   }
+  @media only screen and (min-width: 1200px) {
+    position: relative;
+    cursor: pointer;
+  }
 `;
 
 const Hoverline = styled.div`
   display: none;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1200px) {
   }
 `;
 const LiDiv = styled.div`
   display: flex;
   gap: 25px;
-  @media only screen and (min-width: 768px) {
-
-  }
 `;
 const Arrow = styled.img`
   width: 4px;

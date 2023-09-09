@@ -75,6 +75,14 @@ const Section = styled.section`
       "info types"
       "facts facts";
   }
+  @media only screen and (min-width: 1200px) {
+    margin-top: 0px;
+    grid-template-areas:
+      "planet-image info"
+      "planet-image types"
+      "facts facts";
+    column-gap: 299px;
+  }
 `;
 const ImageType = styled.div`
   display: flex;
@@ -90,6 +98,10 @@ const ImageType = styled.div`
     margin-top: 186px;
     padding: unset;
     grid-area: types;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-top: 39px;
+    margin-left: -14px;
   }
 `;
 
@@ -113,6 +125,13 @@ const H2 = styled.h2`
     text-align: left;
     padding: 0px 20px;
   }
+  @media only screen and (min-width: 1200px) {
+    font-size: 12px;
+    letter-spacing: 2.571px;
+    width: 350px;
+    height: 48px;
+    line-height: 50px;
+  }
 `;
 const Textspan = styled.span`
   display: none;
@@ -126,6 +145,9 @@ const Number = styled.span`
     display: inline;
     opacity: 0.5;
   }
+  @media only screen and (min-width: 1200px) {
+    margin-right: 18px;
+  }
 `;
 
 const ImageDiv = styled.div`
@@ -136,6 +158,9 @@ const ImageDiv = styled.div`
   align-items: center;
   @media only screen and (min-width: 768px) {
     margin-right: 160px;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin: unset;
   }
 `;
 
@@ -152,6 +177,13 @@ const Planetimg = styled.img`
     margin-right: -220px;
     grid-area: planet-image;
   }
+  @media only screen and (min-width: 1200px) {
+    width: 290px;
+    height: 290px;
+    margin-top: 242px;
+    margin-left: 150px;
+    margin-right: unset;
+  }
 `;
 const Surfaceimg = styled.img`
   width: 100px;
@@ -161,6 +193,12 @@ const Surfaceimg = styled.img`
   @media only screen and (min-width: 768px) {
     top: 270px;
     left: 310px;
+  }
+  @media only screen and (min-width: 1200px) {
+    top: 480px;
+    left: 225px;
+    width: 163px;
+    height: 199px;
   }
 `;
 
@@ -181,6 +219,9 @@ const Information = styled.div`
     grid-area: info;
     margin-left: 26px;
   }
+  @media only screen and (min-width: 1200px) {
+    margin-top: 154px;
+  }
 `;
 const H3 = styled.h3`
   color: #fff;
@@ -195,6 +236,9 @@ const H3 = styled.h3`
     font-size: 48px;
     text-align: left;
   }
+  @media only screen and (min-width: 1200px) {
+    font-size: 80px;
+  }
 `;
 const Text = styled.p`
   color: #fff;
@@ -208,6 +252,11 @@ const Text = styled.p`
     width: 339px;
     text-align: left;
   }
+  @media only screen and (min-width: 1200px) {
+    width: 350px;
+    font-size: 14px;
+    line-height: 25px;
+  }
 `;
 const Source = styled.div`
   display: flex;
@@ -215,6 +264,8 @@ const Source = styled.div`
   justify-content: center;
   @media only screen and (min-width: 768px) {
     justify-content: left;
+  }
+  @media only screen and (min-width: 1200px) {
   }
 `;
 
@@ -225,6 +276,10 @@ const Wiki = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 25px; /* 208.333% */
+  @media only screen and (min-width: 1200px) {
+    font-size: 14px;
+
+  }
 `;
 const LinkWiki = styled.a`
   color: #808080;
@@ -234,6 +289,9 @@ const LinkWiki = styled.a`
   font-weight: 700;
   line-height: 25px;
   text-decoration-line: underline;
+  @media only screen and (min-width: 1200px) {
+    font-size: 14px;
+  }
 `;
 
 const Wikisrc = styled.img`
@@ -256,6 +314,11 @@ const Facts = styled.div`
     margin-bottom: 36px;
     grid-area: facts;
   }
+  @media only screen and (min-width: 1200px) {
+    gap: 30px;
+    margin-top: 87px;
+    margin-bottom: 49px;
+  }
 `;
 const Fact = styled.div`
   padding: 16px 24px;
@@ -271,6 +334,11 @@ const Fact = styled.div`
     justify-content: space-between;
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
+  @media only screen and (min-width: 1200px) {
+    padding: 20px 23px;
+    width: 255px;
+    height: 128px;
+  }
 `;
 
 const Name2 = styled.p`
@@ -283,7 +351,10 @@ const Name2 = styled.p`
   letter-spacing: 0.727px;
   text-transform: uppercase;
   margin-top: 4px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1200px) {
+    font-size: 11px;
+    line-height: 25px; /* 227.273% */
+    letter-spacing: 1px;
   }
 `;
 const Data = styled.p`
@@ -300,5 +371,9 @@ const Data = styled.p`
     font-size: 24px;
     letter-spacing: -0.9px;
     text-align: left;
+  }
+  @media only screen and (min-width: 1200px) {
+    font-size: 40px;
+    letter-spacing: -1.5px;
   }
 `;
