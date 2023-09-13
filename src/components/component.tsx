@@ -1,37 +1,107 @@
 import styled from "styled-components";
-import image from "../assets/planet-mercury.svg";
-import image2 from "../assets/geology-mercury.png";
+import { useEffect, useState } from "react";
+// import image from "../assets/planet-mercury.svg";
 import image3 from "../assets/icon-source.svg";
 
-function Planet() {
+function Planet(props: any) {
+  const [activeType, setActiveType] = useState<number>(1);
+
+  const handleTypeClick = (index: number) => {
+    setActiveType(index);
+    getData(props.planet, index);
+  };
+  const [name, setName] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [link, setLink] = useState<string>("");
+  const [rotation, setRotation] = useState<string>("");
+  const [revolution, setRevolution] = useState<string>("");
+  const [radius, setRadius] = useState<string>("");
+  const [temp, setTemp] = useState<string>("");
+  const [image, setImage] = useState<string>("");
+  const [imagesurface, setImagesurface] = useState<string>("");
+  const [displaySurface, setdisplaySurface] = useState<boolean>(false);
+  const [colors, setColor] = useState<string>("");
+
+  const url = "https://planets-api.vercel.app/api/v1/planets";
+
+  async function getData(number: number, type: number) {
+    const res = await fetch(url);
+    const data = await res.json();
+    setName(data[number].name);
+    setRotation(data[number].rotation);
+    setRevolution(data[number].revolution);
+    setRadius(data[number].radius);
+    setTemp(data[number].temperature);
+    setdisplaySurface(false);
+    setColor(data[number].color);
+
+    if (type == 1) {
+      setText(data[number].overview.content);
+      setLink(data[number].overview.source);
+      setImage(data[number].images.planet);
+      setdisplaySurface(false);
+    }
+    if (type == 2) {
+      setText(data[number].structure.content);
+      setLink(data[number].structure.source);
+      setImage(data[number].images.internal);
+      setdisplaySurface(false);
+    }
+    if (type == 3) {
+      setText(data[number].geology.content);
+      setLink(data[number].geology.source);
+      setImage(data[number].images.planet);
+      setImagesurface(data[number].images.geology);
+      setdisplaySurface(true);
+    }
+  }
+
+  useEffect(() => {
+    getData(props.planet, 1);
+    setActiveType(1)
+  }, [props.planet]);
+
   return (
     <Section>
       <ImageType>
-        <H2>
-          <Number>01</Number> OVERVIEW
+        <H2
+          color={colors}
+          active2={activeType === 1}
+          onClick={() => handleTypeClick(1)}
+        >
+          <Number>01 </Number> OVERVIEW
         </H2>
-        <H2>
-          <Number>02</Number> <Textspan>Internal</Textspan> Structure
+        <H2
+          color={colors}
+          active2={activeType === 2}
+          onClick={() => handleTypeClick(2)}
+        >
+          <Number>02 </Number>
+          <Textspan>Internal</Textspan> Structure
         </H2>
-        <H2>
-          <Number>03</Number> Surface <Textspan>Geology</Textspan>
+        <H2
+          color={colors}
+          active2={activeType === 3}
+          onClick={() => handleTypeClick(3)}
+        >
+          <Number>03 </Number>
+          Surface <Textspan> Geology</Textspan>
         </H2>
       </ImageType>
       <ImageDiv>
-        <Planetimg src={image} alt="" />
-        <Surfaceimg src={image2} alt="" />
+        <Planetimg src={image} alt="plaent image" />
+        <Surfaceimg
+          style={displaySurface ? { display: "inline" } : { display: "none" }}
+          src={imagesurface}
+          alt="surface"
+        />
       </ImageDiv>
       <Information>
-        <H3>mercury</H3>
-        <Text>
-          Mercury is the smallest planet in the Solar System and the closest to
-          the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest
-          of all the Sun's planets. Mercury is one of four terrestrial planets
-          in the Solar System, and is a rocky body like Earth.
-        </Text>
+        <H3>{name}</H3>
+        <Text>{text}</Text>
         <Source>
           <Wiki>
-            source: <LinkWiki href="#">Wikipedia</LinkWiki>
+            source: <LinkWiki href={link}>Wikipedia</LinkWiki>
           </Wiki>
           <Wikisrc src={image3} alt="" />
         </Source>
@@ -39,19 +109,19 @@ function Planet() {
       <Facts>
         <Fact>
           <Name2>ROTATION TIME</Name2>
-          <Data>58.6 days</Data>
+          <Data>{rotation}</Data>
         </Fact>
         <Fact>
-          <Name2>ROTATION TIME</Name2>
-          <Data>58.6 days</Data>
+          <Name2>REVOLUTION TIME</Name2>
+          <Data>{revolution}</Data>
         </Fact>
         <Fact>
-          <Name2>ROTATION TIME</Name2>
-          <Data>58.6 days</Data>
+          <Name2>radius</Name2>
+          <Data>{radius}</Data>
         </Fact>
         <Fact>
-          <Name2>ROTATION TIME</Name2>
-          <Data>58.6 days</Data>
+          <Name2>AVERAGE TEMP.</Name2>
+          <Data>{temp}</Data>
         </Fact>
       </Facts>
     </Section>
@@ -105,7 +175,7 @@ const ImageType = styled.div`
   }
 `;
 
-const H2 = styled.h2`
+const H2 = styled.h2<{ active2: boolean; color: string }>`
   color: #fff;
   text-align: center;
   font-family: "League Spartan", sans-serif;
@@ -116,14 +186,21 @@ const H2 = styled.h2`
   letter-spacing: 1.929px;
   text-transform: uppercase;
   padding-bottom: 16px;
+  border-bottom: ${(props) =>
+    props.active2 ? `4px solid ${props.color}` : ""};
   @media only screen and (min-width: 768px) {
     border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: ${(props) => (props.active2 ? `${props.color}` : "")};
     width: 281px;
     height: 40px;
     line-height: 40px;
     margin-left: 40px;
     text-align: left;
     padding: 0px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(216, 216, 216, 0.2);
+    }
   }
   @media only screen and (min-width: 1200px) {
     font-size: 12px;
@@ -189,7 +266,6 @@ const Surfaceimg = styled.img`
   width: 100px;
   position: absolute;
   top: 170px;
-  display: none;
   @media only screen and (min-width: 768px) {
     top: 270px;
     left: 310px;
@@ -278,7 +354,6 @@ const Wiki = styled.p`
   line-height: 25px; /* 208.333% */
   @media only screen and (min-width: 1200px) {
     font-size: 14px;
-
   }
 `;
 const LinkWiki = styled.a`

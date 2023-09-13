@@ -1,96 +1,168 @@
-// import {Link, Outlet} from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import hamburger from "./assets/icon-hamburger.svg";
 import arrow from "./assets/icon-chevron.svg";
 import backgroundColor from "./assets/background-stars.svg";
 import "./styles.css";
-import Planet from "./components/component";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
+  const [activeButton, setActiveButton] = useState<number>(0);
+
+  const handleButtonClick = (index: number) => {
+    setActiveButton(index);
+    getcolor(index);
+  };
 
   const togglePrimary = () => {
     setOpen(!open);
   };
+  const url = "https://planets-api.vercel.app/api/v1/planets";
 
+  const [hoverColor, setHoverColor] = useState<string>("");
+  async function getcolor(num: number) {
+    const res = await fetch(url);
+    const data = await res.json();
+    setHoverColor(data[num].color);
+  }
+
+  useEffect(() => {
+    getcolor(0);
+  }, []);
   return (
     <>
-      <GlobalStyles />
+      <GlobalStyles scroll={hoverColor} />
       <HeaderStyle imageurl={backgroundColor}>
         <H1>the planets</H1>
         <Burger src={hamburger} alt="hamburger" onClick={togglePrimary} />
         <Nav primary={open.toString()}>
           <Ul>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#DEF4FC"></Circle>
-                <Name>mercury</Name>
+                <Link style={{ textDecoration: "none" }} to="/mercury">
+                  <Name
+                    active={activeButton === 0}
+                    onClick={() => handleButtonClick(0)}
+                  >
+                    mercury
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#F7CC7F"></Circle>
-                <Name>venus</Name>
+                <Link style={{ textDecoration: "none" }} to="/venus">
+                  <Name
+                    active={activeButton === 1}
+                    onClick={() => handleButtonClick(1)}
+                  >
+                    venus
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#545BFE"></Circle>
-                <Name>earth</Name>
+                <Link style={{ textDecoration: "none" }} to="/earth">
+                  <Name
+                    active={activeButton === 2}
+                    onClick={() => handleButtonClick(2)}
+                  >
+                    earth
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#FF6A45"></Circle>
-                <Name>mars</Name>
+                <Link style={{ textDecoration: "none" }} to="/mars">
+                  <Name
+                    active={activeButton === 3}
+                    onClick={() => handleButtonClick(3)}
+                  >
+                    mars
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#ECAD7A"></Circle>
-                <Name>jupiter</Name>
+                <Link style={{ textDecoration: "none" }} to="/jupiter">
+                  <Name
+                    active={activeButton === 4}
+                    onClick={() => handleButtonClick(4)}
+                  >
+                    jupiter
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#FCCB6B"></Circle>
-                <Name>saturn</Name>
+                <Link style={{ textDecoration: "none" }} to="/saturn">
+                  <Name
+                    active={activeButton === 5}
+                    onClick={() => handleButtonClick(5)}
+                  >
+                    saturn
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#65F0D5"></Circle>
-                <Name>uranus</Name>
+                <Link style={{ textDecoration: "none" }} to="uranus">
+                  <Name
+                    active={activeButton === 6}
+                    onClick={() => handleButtonClick(6)}
+                  >
+                    uranus
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
-            <Li>
+            <Li color={hoverColor}>
               <Hoverline></Hoverline>
               <LiDiv>
                 <Circle color="#497EFA"></Circle>
-                <Name>neptune</Name>
+                <Link style={{ textDecoration: "none" }} to="/neptune">
+                  <Name
+                    active={activeButton === 7}
+                    onClick={() => handleButtonClick(7)}
+                  >
+                    neptune
+                  </Name>
+                </Link>
               </LiDiv>
               <Arrow src={arrow} alt="arrow" />
             </Li>
           </Ul>
         </Nav>
       </HeaderStyle>
-      <Planet/>
+      <Outlet />
     </>
   );
 }
@@ -103,7 +175,7 @@ const moveBackground = keyframes`
     background-position: 100% 0;
   }
 `;
-const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle<{ scroll: string }>`
   * {
     margin: 0;
     padding: 0;
@@ -112,6 +184,20 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: #070724;
     animation: ${moveBackground} 10s Linear infinite;
+  }
+  @media only screen and (min-width: 1200px) {
+  &::-webkit-scrollbar {
+    width: 5px; /* Scrollbar width */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #070724 /* Track background color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color:  ${(props) => props.scroll};
+    border-radius: 5px; /* Thumb border radius */
+  }
   }
 `;
 const HeaderStyle = styled.header<{ imageurl: string }>`
@@ -182,7 +268,7 @@ const Nav = styled.nav<{ primary: string }>`
     margin: 39px -20px 0px -20px;
     padding: unset;
     animation: unset;
-    display: block;
+    display: inline;
   }
   @media only screen and (min-width: 1200px) {
     margin: unset;
@@ -200,7 +286,17 @@ const Ul = styled.ul`
     gap: 33px;
   }
 `;
-const Li = styled.li`
+
+const Hoverline = styled.div`
+  display: none;
+  @media only screen and (min-width: 1200px) {
+    display: inline;
+    width: 100%;
+    height: 4px;
+  }
+`;
+
+const Li = styled.li<{ color: string }>`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px soLid rgba(255, 255, 255, 0.1);
@@ -214,14 +310,16 @@ const Li = styled.li`
   @media only screen and (min-width: 1200px) {
     position: relative;
     cursor: pointer;
+    &:hover ${Hoverline} {
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      margin-top: -27.5px;
+      background-color: ${(props) => props.color};
+    }
   }
 `;
 
-const Hoverline = styled.div`
-  display: none;
-  @media only screen and (min-width: 1200px) {
-  }
-`;
 const LiDiv = styled.div`
   display: flex;
   gap: 25px;
@@ -243,7 +341,7 @@ const Circle = styled.div<{ color: string }>`
   }
 `;
 
-const Name = styled.p`
+const Name = styled.p<{ active: boolean }>`
   color: #fff;
   text-align: center;
   font-family: "League Spartan", sans-serif;
@@ -256,6 +354,7 @@ const Name = styled.p`
   @media only screen and (min-width: 768px) {
     font-size: 11px;
     letter-spacing: 1px;
+    opacity: ${(props) => (props.active ? "1" : "0.75")};
   }
 `;
 export default App;
