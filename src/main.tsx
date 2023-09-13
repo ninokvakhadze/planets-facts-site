@@ -2,7 +2,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Planet from "./components/component";
 import {
-  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
