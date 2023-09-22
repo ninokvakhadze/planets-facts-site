@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-// import image from "../assets/planet-mercury.svg";
 import image3 from "../assets/icon-source.svg";
 
 function Planet(props: any) {
