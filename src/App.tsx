@@ -14,6 +14,7 @@ function App() {
   const handleButtonClick = (index: number) => {
     setActiveButton(index);
     getcolor(index);
+    setOpen(false);
   };
 
   const togglePrimary = () => {
