@@ -31,6 +31,7 @@ function App() {
 
   useEffect(() => {
     getcolor(0);
+    setActiveButton(0);
   }, []);
   return (
     <>
@@ -40,126 +41,114 @@ function App() {
         <Burger src={hamburger} alt="hamburger" onClick={togglePrimary} />
         <Nav primary={open.toString()}>
           <Ul>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#DEF4FC"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/mercury">
-                  <Name
-                    active={activeButton === 0}
-                    onClick={() => handleButtonClick(0)}
-                  >
-                    mercury
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#F7CC7F"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/venus">
-                  <Name
-                    active={activeButton === 1}
-                    onClick={() => handleButtonClick(1)}
-                  >
-                    venus
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#545BFE"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/earth">
-                  <Name
-                    active={activeButton === 2}
-                    onClick={() => handleButtonClick(2)}
-                  >
-                    earth
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#FF6A45"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/mars">
-                  <Name
-                    active={activeButton === 3}
-                    onClick={() => handleButtonClick(3)}
-                  >
-                    mars
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#ECAD7A"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/jupiter">
-                  <Name
-                    active={activeButton === 4}
-                    onClick={() => handleButtonClick(4)}
-                  >
-                    jupiter
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#FCCB6B"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/saturn">
-                  <Name
-                    active={activeButton === 5}
-                    onClick={() => handleButtonClick(5)}
-                  >
-                    saturn
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#65F0D5"></Circle>
-                <Link style={{ textDecoration: "none" }} to="uranus">
-                  <Name
-                    active={activeButton === 6}
-                    onClick={() => handleButtonClick(6)}
-                  >
-                    uranus
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
-            <Li color={hoverColor}>
-              <Hoverline></Hoverline>
-              <LiDiv>
-                <Circle color="#497EFA"></Circle>
-                <Link style={{ textDecoration: "none" }} to="/neptune">
-                  <Name
-                    active={activeButton === 7}
-                    onClick={() => handleButtonClick(7)}
-                  >
-                    neptune
-                  </Name>
-                </Link>
-              </LiDiv>
-              <Arrow src={arrow} alt="arrow" />
-            </Li>
+            <Link
+              onClick={() => handleButtonClick(0)}
+              style={{ textDecoration: "none" }}
+              to="/mercury"
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#DEF4FC"></Circle>
+                  <Name active={activeButton === 0}>mercury</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to="/venus">
+              <Li color={hoverColor} onClick={() => handleButtonClick(1)}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#F7CC7F"></Circle>
+                  <Name active={activeButton === 1}>venus</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/earth"
+              onClick={() => handleButtonClick(2)}
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#545BFE"></Circle>
+                  <Name active={activeButton === 2}>earth</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/mars"
+              onClick={() => handleButtonClick(3)}
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#FF6A45"></Circle>
+                  <Name active={activeButton === 3}>mars</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              onClick={() => handleButtonClick(4)}
+              style={{ textDecoration: "none" }}
+              to="/jupiter"
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#ECAD7A"></Circle>
+                  <Name active={activeButton === 4}>jupiter</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/saturn"
+              onClick={() => handleButtonClick(5)}
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#FCCB6B"></Circle>
+                  <Name active={activeButton === 5}>saturn</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="uranus"
+              onClick={() => handleButtonClick(6)}
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#65F0D5"></Circle>
+                  <Name active={activeButton === 6}>uranus</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/neptune"
+              onClick={() => handleButtonClick(7)}
+            >
+              <Li color={hoverColor}>
+                <Hoverline></Hoverline>
+                <LiDiv>
+                  <Circle color="#497EFA"></Circle>
+                  <Name active={activeButton === 7}>neptune</Name>
+                </LiDiv>
+                <Arrow src={arrow} alt="arrow" />
+              </Li>
+            </Link>
           </Ul>
         </Nav>
       </HeaderStyle>
