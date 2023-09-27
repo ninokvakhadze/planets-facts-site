@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet , useNavigate} from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { useState, useEffect } from "react";
@@ -10,6 +10,7 @@ import "./styles.css";
 function App() {
   const [open, setOpen] = useState<boolean>(false);
   const [activeButton, setActiveButton] = useState<number>(0);
+  const navigate = useNavigate();
 
   const handleButtonClick = (index: number) => {
     setActiveButton(index);
@@ -32,6 +33,7 @@ function App() {
   useEffect(() => {
     getcolor(0);
     setActiveButton(0);
+   navigate("/mercury")
   }, []);
   return (
     <>
@@ -177,16 +179,16 @@ const GlobalStyles = createGlobalStyle<{ scroll: string }>`
   }
   @media only screen and (min-width: 1200px) {
   &::-webkit-scrollbar {
-    width: 5px; /* Scrollbar width */
+    width: 5px; 
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #070724 /* Track background color */
+    background-color: #070724 
   }
 
   &::-webkit-scrollbar-thumb {
     background-color:  ${(props) => props.scroll};
-    border-radius: 5px; /* Thumb border radius */
+    border-radius: 5px;
   }
   }
 `;
